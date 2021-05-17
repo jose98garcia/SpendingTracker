@@ -12,10 +12,13 @@ router.get('/', async (req, res) => {
 //ADD
 router.post('/', async (req, res) => {
     const posts = await loadPostsCollection();
+    //console.log(req.body);
+    //console.log(req.body.budgetCategories);
+    //console.log(req.body.budgetCategories.categoryName);
     await posts.insertOne({
-        category: req.body.category,
-        transaction: req.body.transaction,
-        transactionCost: req.body.transactionCost,        
+        budgetName: req.body.budgetName,
+        budgetTotal: req.body.budgetTotal, 
+        budgetCategories: req.body.budgetCategories,
         createdAt: new Date()
     });
 
